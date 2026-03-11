@@ -1,0 +1,2 @@
+run_id,task,dataset_version,model_name,prompt_version,seed,main_metric,artifact_path,timestamp
+sampling_20260310T111610Z,vihsd_hate_speech_detection,vihsd2019,logreg_tfidf_ROS+ENN,n/a,42,0.520671,results/tables/table_4_2_sampling_results.csv,2026-03-10T11:16:10.751800+00:00

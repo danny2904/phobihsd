@@ -1,0 +1,94 @@
+# -----------------------------
+# OS / Editor
+# -----------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# -----------------------------
+# Python
+# -----------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# -----------------------------
+# Secrets / local env files
+# -----------------------------
+.env
+.env.*
+*.env
+.worker-*.env
+
+# -----------------------------
+# Build / packaging
+# -----------------------------
+build/
+dist/
+*.egg-info/
+
+# -----------------------------
+# Data artifacts
+# -----------------------------
+# Keep only minimal reproducible split if needed.
+# Raw datasets are typically not committed.
+data/raw/
+data/processed/
+
+# -----------------------------
+# Model / checkpoint artifacts
+# -----------------------------
+models/
+checkpoints/
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# -----------------------------
+# Logs and runtime outputs
+# -----------------------------
+results/logs/
+results/figures/
+results/archives/
+
+# Keep tracked result tables for thesis report
+!results/tables/
+results/tables/*
+!results/tables/table_4_5_proposed_main.csv
+!results/tables/table_4_5_model_comparison_extended.csv
+!results/tables/table_4_6_sampling_impact.csv
+!results/tables/table_4_6_sampling_impact_detail.csv
+!results/tables/table_4_6_sampling_impact_analysis.md
+!results/tables/table_4_5_4_6_rebuilt_summary.md
+
+# Keep summary metrics used in report
+!results/metrics/
+results/metrics/*
+!results/metrics/model_comparison_table_4_5.json
+!results/metrics/sampling_table_4_6.json
+
+# -----------------------------
+# Paper assets (avoid large binaries)
+# -----------------------------
+docs/papers/**/*.pdf
+
+# -----------------------------
+# Misc
+# -----------------------------
+*.log

@@ -1,0 +1,56 @@
+seed: 42
+
+dataset:
+  train_csv: data/raw/train.csv
+  dev_csv: data/raw/dev.csv
+  test_csv: data/raw/test.csv
+
+preprocess:
+  lowercase: false
+
+classical:
+  max_features: 20000
+
+bilstm:
+  max_len: 64
+  min_freq: 2
+  emb_dim: 128
+  hidden_dim: 128
+  batch_size: 64
+  epochs: 5
+  lr: 0.001
+
+phobert:
+  model_name: vinai/phobert-base-v2
+  text_source: raw_text
+  max_len: 256
+  batch_size: 16
+  eval_batch_size: 32
+  epochs: 3
+  lr: 2.0e-5
+  weight_decay: 0.01
+
+phobert_bilstm:
+  text_source: raw_text
+  freeze_encoder: false
+  head_type: cls_mlp
+  max_len: 256
+  hidden_dim: 256
+  dropout: 0.3
+  batch_size: 16
+  epochs: 5
+  encoder_lr: 1.0e-5
+  head_lr: 3.0e-5
+  llrd: 0.9
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  grad_clip: 1.0
+  loss_type: class_weight
+  early_stopping_patience: 2
+  threshold_grid: [0.4, 0.45, 0.5, 0.55, 0.6]
+
+outputs:
+  model_table_csv: results/tables/table_4_3_phobert_confirm51.csv
+  metrics_json: results/metrics/model_comparison_phobert_confirm51.json
+  log_txt: results/logs/table_4_3_phobert_confirm51.log
+  registry_csv: experiments/registry.csv

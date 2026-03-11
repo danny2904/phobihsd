@@ -1,0 +1,12 @@
+Rank,Model,Precision,Recall,Macro F1,Accuracy,Source,Group
+1,PhoBERT-BiLSTM (proposed),0.6735992696873744,0.6395684554627229,0.651438517877858,0.8752994011976047,This repo (current run set),Internal
+2,PhoBERT,0.6648497084313919,0.6356077452009781,0.6492238356358963,0.8706586826347306,This repo (current run set),Internal
+3,BERT multilingual cased [ViHSD-2021],,,0.6269,0.8688,"Luu et al. 2021 (arXiv:2103.11528, Table 4)",ViHSD original baselines
+4,DistilBERT multilingual cased [ViHSD-2021],,,0.6242,0.8622,"Luu et al. 2021 (arXiv:2103.11528, Table 4)",ViHSD original baselines
+5,BERT multilingual uncased [ViHSD-2021],,,0.6238,0.866,"Luu et al. 2021 (arXiv:2103.11528, Table 4)",ViHSD original baselines
+6,SVM,0.6922339256849748,0.5726346851202236,0.6128221960808921,0.8717065868263473,This repo (current run set),Internal
+7,XLM-R base [ViHSD-2021],,,0.6128,0.8612,"Luu et al. 2021 (arXiv:2103.11528, Table 4)",ViHSD original baselines
+8,Text-CNN (fastText) [ViHSD-2021],,,0.6111,0.8669,"Luu et al. 2021 (arXiv:2103.11528, Table 4)",ViHSD original baselines
+9,GRU (fastText) [ViHSD-2021],,,0.6047,0.8541,"Luu et al. 2021 (arXiv:2103.11528, Table 4)",ViHSD original baselines
+10,BiLSTM,0.6169985350012485,0.5589549335808202,0.5791760744803375,0.8553892215568862,This repo (current run set),Internal
+11,Logistic Regression,0.7574639129469242,0.5179334624190092,0.5707200191334391,0.8714071856287425,This repo (current run set),Internal

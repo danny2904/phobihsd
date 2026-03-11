@@ -1,0 +1,19 @@
+{
+  "run_type": "model_comparison_table_4_5",
+  "seed": 42,
+  "device": "cuda",
+  "results": {
+    "PhoBERT": {
+      "accuracy": 0.8706586826347306,
+      "precision_macro": 0.6648497084313919,
+      "recall_macro": 0.6356077452009781,
+      "f1_macro": 0.6492238356358963
+    },
+    "PhoBERT-BiLSTM (proposed)": {
+      "accuracy": 0.8752994011976047,
+      "precision_macro": 0.6735992696873744,
+      "recall_macro": 0.6395684554627229,
+      "f1_macro": 0.651438517877858
+    }
+  }
+}

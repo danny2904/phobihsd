@@ -1,0 +1,74 @@
+project_root: .
+report_path: docs/report_2026-03-10.md
+update_timestamp_marker: REPORT_TIMESTAMP
+
+sections:
+  - id: TABLE_42_REBUILT
+    type: csv_table
+    path: results/tables/table_4_2_sampling_results_rebuilt.csv
+    columns:
+      - key: Rank
+        label: Rank
+      - key: Method
+        label: Method
+      - key: Precision
+        label: Precision
+        fmt: "{:.4f}"
+      - key: Recall
+        label: Recall
+        fmt: "{:.4f}"
+      - key: Macro F1
+        label: Macro F1
+        fmt: "{:.4f}"
+      - key: Accuracy
+        label: Accuracy
+        fmt: "{:.4f}"
+      - key: Selected_for_next_pipeline
+        label: Selected
+
+  - id: TABLE_43_CURRENT
+    type: csv_table
+    path: results/tables/table_4_3_model_comparison.csv
+    columns:
+      - key: Model
+        label: Model
+      - key: Precision
+        label: Precision
+        fmt: "{:.4f}"
+      - key: Recall
+        label: Recall
+        fmt: "{:.4f}"
+      - key: Macro F1
+        label: Macro F1
+        fmt: "{:.4f}"
+      - key: Accuracy
+        label: Accuracy
+        fmt: "{:.4f}"
+
+  - id: TABLE_43_EXTENDED
+    type: csv_table
+    path: results/tables/table_4_3_model_comparison_extended.csv
+    columns:
+      - key: Rank
+        label: Rank
+      - key: Model
+        label: Model
+      - key: Macro F1
+        label: Macro F1
+      - key: Accuracy
+        label: Accuracy
+      - key: Source
+        label: Source
+      - key: Group
+        label: Group
+
+  - id: ARTIFACT_STATUS
+    type: run_status
+    expected_paths:
+      - results/tables/table_4_2_sampling_results.csv
+      - results/tables/table_4_2_sampling_results_rebuilt.csv
+      - results/tables/table_4_3_model_comparison.csv
+      - results/tables/table_4_3_model_comparison_extended.csv
+      - results/metrics/metrics.json
+      - results/metrics/model_comparison_metrics.json
+      - results/logs/experiment_log.txt

@@ -1,0 +1,42 @@
+seed: 4
+
+dataset:
+  train_csv: data/raw/train.csv
+  dev_csv: data/raw/dev.csv
+  test_csv: data/raw/test.csv
+
+preprocess:
+  lowercase: false
+
+features:
+  max_features: 20000
+  min_df: 2
+  use_svd: true
+  svd_components: 256
+
+model:
+  model_name: vinai/phobert-base-v2
+  text_source: raw_text
+  freeze_encoder: false
+  head_type: cls_mlp
+  max_len: 100
+  hidden_dim: 256
+  dropout: 0.5
+  batch_size: 16
+  epochs: 4
+  encoder_lr: 1.0e-5
+  head_lr: 3.0e-5
+  llrd: 0.9
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  grad_clip: 1.0
+  loss_type: class_weight
+  early_stopping_patience: 2
+  threshold_grid: [0.4, 0.45, 0.5, 0.55, 0.6]
+
+outputs:
+  sampling_table_csv: results/tables/table_4_6_sampling_impact.csv
+  metrics_json: results/metrics/sampling_table_4_6.json
+  log_txt: results/logs/table_4_6_sampling.log
+  confusion_matrix_png: results/figures/confusion_matrix_table_4_6.png
+  registry_csv: experiments/registry.csv
