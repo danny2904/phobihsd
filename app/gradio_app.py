@@ -9,7 +9,23 @@ import gradio as gr
 
 from src.inference.proposed_predictor import ProposedPredictor
 
-DEFAULT_CKPT = os.getenv("PHOBIHSD_PROPOSED_CKPT", "models/phobihsd_proposed.pt")
+
+def _default_ckpt_path() -> str:
+    env_ckpt = os.getenv("PHOBIHSD_PROPOSED_CKPT")
+    if env_ckpt:
+        return env_ckpt
+    if os.path.exists("models/phobihsd_proposed.safetensors"):
+        return "models/phobihsd_proposed.safetensors"
+    if os.path.exists("results/checkpoints/phobihsd_proposed.safetensors"):
+        return "results/checkpoints/phobihsd_proposed.safetensors"
+    if os.path.exists("models/phobihsd_proposed.pt"):
+        return "models/phobihsd_proposed.pt"
+    if os.path.exists("results/checkpoints/phobihsd_proposed.pt"):
+        return "results/checkpoints/phobihsd_proposed.pt"
+    return "models/phobihsd_proposed.safetensors"
+
+
+DEFAULT_CKPT = _default_ckpt_path()
 DEFAULT_CFG = os.getenv("PHOBIHSD_CONFIG", "config/experiments/model_comparison.yaml")
 DEFAULT_DEVICE = os.getenv("PHOBIHSD_DEVICE", "auto")
 DEFAULT_HOST = os.getenv("PHOBIHSD_HOST", "0.0.0.0")
@@ -64,26 +80,122 @@ DESCRIPTION = (
     f"Runtime device mode: {DEFAULT_DEVICE}."
 )
 
+CUSTOM_CSS = """
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
 
-with gr.Blocks(title="PhoBiHSD Proposed Model Demo") as demo:
-    gr.Markdown("# PhoBiHSD Proposed Model Demo")
-    gr.Markdown(DESCRIPTION)
+:root {
+  --phb-bg-a: #f7fbff;
+  --phb-bg-b: #eef6f2;
+  --phb-card: #ffffff;
+  --phb-ink: #0f172a;
+  --phb-soft: #475569;
+  --phb-accent: #0f766e;
+}
+
+body, .gradio-container {
+  font-family: "Be Vietnam Pro", "Segoe UI", sans-serif !important;
+  color: var(--phb-ink);
+  font-size: 18px !important;
+}
+
+.gradio-container {
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  background: radial-gradient(1200px 600px at 0% 0%, var(--phb-bg-a), transparent),
+              radial-gradient(1200px 600px at 100% 0%, var(--phb-bg-b), transparent);
+}
+
+.phb-hero {
+  background: linear-gradient(135deg, #f8fafc, #ecfeff);
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+}
+
+.phb-hero h1 {
+  margin: 0 0 8px 0;
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.phb-hero p {
+  margin: 0;
+  font-size: 19px;
+  color: var(--phb-soft);
+}
+
+.phb-card {
+  background: var(--phb-card);
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 10px 12px;
+}
+
+.phb-card h3 {
+  margin: 6px 6px 10px 6px;
+  font-size: 22px;
+}
+
+.phb-footnote {
+  font-size: 15px;
+  color: var(--phb-soft);
+  margin-top: 8px;
+}
+
+.gr-button {
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  border-radius: 14px !important;
+  min-height: 54px !important;
+}
+
+textarea, input, .gr-textbox, .gr-label, .gr-markdown, .gr-form {
+  font-size: 18px !important;
+}
+
+.gr-textbox textarea {
+  line-height: 1.6 !important;
+}
+
+label span {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+}
+"""
+
+APP_THEME = gr.themes.Soft(
+    primary_hue="emerald",
+    secondary_hue="blue",
+    neutral_hue="slate",
+)
+
+with gr.Blocks(title="PhoBiHSD Proposed Model Demo", css=CUSTOM_CSS, theme=APP_THEME) as demo:
+    gr.Markdown(
+        f"""
+<div class="phb-hero">
+  <h1>PhoBiHSD Demo</h1>
+  <p>{DESCRIPTION}</p>
+</div>
+"""
+    )
 
     with gr.Row():
-        textbox = gr.Textbox(
-            label="Input text",
-            lines=4,
-            placeholder="Nhap cau tieng Viet can du doan...",
-        )
+        with gr.Column(scale=6, elem_classes=["phb-card"]):
+            gr.Markdown("### Input")
+            textbox = gr.Textbox(
+                label="Vietnamese text",
+                lines=5,
+                placeholder="Nhap cau tieng Viet can du doan...",
+            )
+            btn = gr.Button("Analyze Text", variant="primary")
+            gr.Markdown('<div class="phb-footnote">Mẹo: nhập câu ngắn, rõ nghĩa để kết quả ổn định hơn.</div>')
 
-    with gr.Row():
-        btn = gr.Button("Predict", variant="primary")
-
-    with gr.Row():
-        output_summary = gr.Textbox(label="Prediction", lines=4)
-        output_probs = gr.Label(label="Class probabilities", num_top_classes=3)
-
-    output_detail = gr.Textbox(label="Details", lines=2)
+        with gr.Column(scale=6, elem_classes=["phb-card"]):
+            gr.Markdown("### Result")
+            output_summary = gr.Textbox(label="Prediction summary", lines=4)
+            output_probs = gr.Label(label="Class probabilities", num_top_classes=3)
+            output_detail = gr.Textbox(label="Details", lines=2)
 
     gr.Examples(
         examples=[

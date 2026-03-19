@@ -65,7 +65,8 @@ Mở app tại:
 - `http://localhost:7860`
 
 Ghi chú:
-- Nếu chưa có `models/phobihsd_proposed.pt`, script sẽ tự tải từ HF repo mặc định `joshswift/phobihsd-proposed`.
+- Script ưu tiên `models/phobihsd_proposed.safetensors` (an toàn hơn), và fallback sang `.pt` nếu cần.
+- Nếu chưa có checkpoint local, script sẽ tự tải từ HF repo mặc định `joshswift/phobihsd-proposed`.
 
 ### 4) Chạy Docker local (build từ source)
 CPU:

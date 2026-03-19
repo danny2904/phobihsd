@@ -18,6 +18,8 @@ def _resolve_checkpoint(explicit_ckpt: str | None) -> Path:
         candidates.append(Path(explicit_ckpt))
     candidates.extend(
         [
+            Path("models/phobihsd_proposed.safetensors"),
+            Path("results/checkpoints/phobihsd_proposed.safetensors"),
             Path("models/phobihsd_proposed.pt"),
             Path("results/checkpoints/phobihsd_proposed.pt"),
         ]
@@ -56,7 +58,7 @@ pipeline_tag: text-classification
 PhoBiHSD proposed checkpoint (PhoBERT-BiLSTM) for Vietnamese hate speech detection on ViHSD.
 
 ## Files
-- `{ckpt_name}`: PyTorch checkpoint (`state_dict` + optional thresholds).
+- `{ckpt_name}`: checkpoint for model weights (`.safetensors` preferred; `.pt` still supported).
 - `phobihsd_proposed.meta.json`: model metadata.
 - `model_comparison.yaml`: training/inference config used by this repository.
 

@@ -10,6 +10,7 @@ from typing import Dict, List
 import numpy as np
 import torch
 import yaml
+from safetensors.torch import load_file as safetensors_load_file
 from torch.nn import functional as F
 from transformers import AutoTokenizer
 
@@ -96,14 +97,31 @@ class ProposedPredictor:
                 "Train and export proposed model checkpoint first."
             )
 
-        payload = torch.load(self.checkpoint_path, map_location="cpu")
-        if isinstance(payload, dict) and "state_dict" in payload:
-            state_dict = payload["state_dict"]
-            if "thresholds" in payload and isinstance(payload["thresholds"], (list, tuple)):
-                if len(payload["thresholds"]) == 3:
-                    self.thresholds = np.asarray(payload["thresholds"], dtype=np.float32)
+        state_dict: Dict[str, torch.Tensor]
+        ckpt_suffix = self.checkpoint_path.suffix.lower()
+
+        if ckpt_suffix == ".safetensors":
+            state_dict = safetensors_load_file(str(self.checkpoint_path), device="cpu")
         else:
-            state_dict = payload
+            try:
+                payload = torch.load(self.checkpoint_path, map_location="cpu")
+            except Exception as exc:
+                fallback = self.checkpoint_path.with_suffix(".safetensors")
+                if fallback.exists():
+                    state_dict = safetensors_load_file(str(fallback), device="cpu")
+                else:
+                    raise RuntimeError(
+                        f"Failed to load checkpoint with torch.load: {exc}. "
+                        "Please use a .safetensors checkpoint or upgrade torch >= 2.6."
+                    ) from exc
+            else:
+                if isinstance(payload, dict) and "state_dict" in payload:
+                    state_dict = payload["state_dict"]
+                    if "thresholds" in payload and isinstance(payload["thresholds"], (list, tuple)):
+                        if len(payload["thresholds"]) == 3:
+                            self.thresholds = np.asarray(payload["thresholds"], dtype=np.float32)
+                else:
+                    state_dict = payload
 
         self.model.load_state_dict(state_dict, strict=True)
 

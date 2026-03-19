@@ -15,6 +15,7 @@ import numpy as np
 import pandas as pd
 import torch
 import yaml
+from safetensors.torch import save_file as safetensors_save_file
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
@@ -43,6 +44,16 @@ from src.processing.text_preprocess import preprocess_dataframe
 LABEL_MAP_ID2NAME = {0: "Clean", 1: "Offensive", 2: "Hate"}
 LABELS = ["Clean", "Offensive", "Hate"]
 LABEL2ID = {v: k for k, v in LABEL_MAP_ID2NAME.items()}
+
+
+def _load_hf_model_safetensors_first(model_cls, model_name: str, **kwargs):
+    try:
+        return model_cls.from_pretrained(model_name, use_safetensors=True, **kwargs)
+    except Exception as exc:
+        msg = str(exc).lower()
+        if "safetensors" in msg and ("not found" in msg or "could not locate" in msg or "no file named" in msg):
+            return model_cls.from_pretrained(model_name, **kwargs)
+        raise
 
 
 def progress(iterable, desc: str, total: int | None = None):
@@ -169,7 +180,7 @@ class PhoBertSequenceClassifier(nn.Module):
         freeze_encoder: bool = False,
     ):
         super().__init__()
-        self.encoder = AutoModel.from_pretrained(model_name)
+        self.encoder = _load_hf_model_safetensors_first(AutoModel, model_name)
         self.freeze_encoder = freeze_encoder
         for p in self.encoder.parameters():
             p.requires_grad = not freeze_encoder
@@ -637,7 +648,11 @@ def train_phobert_sequence_classifier(
     lr: float,
     weight_decay: float,
 ) -> nn.Module:
-    model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=3).to(device)
+    model = _load_hf_model_safetensors_first(
+        AutoModelForSequenceClassification,
+        model_name,
+        num_labels=3,
+    ).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
     best_dev_f1 = -1.0
     best_state: Dict[str, torch.Tensor] | None = None
@@ -724,7 +739,11 @@ def train_eval_phobert_with_trainer(
     run_dir: Path,
 ) -> np.ndarray:
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=False)
-    model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=3)
+    model = _load_hf_model_safetensors_first(
+        AutoModelForSequenceClassification,
+        model_name,
+        num_labels=3,
+    )
 
     train_ds = HFTextDataset(train_texts, y_train, tokenizer, max_len)
     dev_ds = HFTextDataset(dev_texts, y_dev, tokenizer, max_len)
@@ -995,13 +1014,16 @@ def run(config_path: str, only_models: List[str] | None = None, device_pref: str
         }
         if proposed_ckpt:
             ckpt_path = Path(str(proposed_ckpt))
+            state_dict_cpu = {k: v.detach().cpu() for k, v in pb_model.state_dict().items()}
             torch.save(
                 {
-                    "state_dict": pb_model.state_dict(),
+                    "state_dict": state_dict_cpu,
                     "thresholds": pb_thresholds.tolist(),
                 },
                 ckpt_path,
             )
+            safetensors_path = ckpt_path.with_suffix(".safetensors")
+            safetensors_save_file(state_dict_cpu, str(safetensors_path))
             meta = {
                 "model_name": phobert_model_name,
                 "head_type": pb_head_type,
@@ -1016,6 +1038,7 @@ def run(config_path: str, only_models: List[str] | None = None, device_pref: str
             with meta_path.open("w", encoding="utf-8") as f:
                 json.dump(meta, f, ensure_ascii=False, indent=2)
             print(f"[DONE] Proposed checkpoint saved: {ckpt_path}", flush=True)
+            print(f"[DONE] Proposed safetensors saved: {safetensors_path}", flush=True)
             print(f"[DONE] Proposed checkpoint meta saved: {meta_path}", flush=True)
 
     table_df = pd.DataFrame(rows)
