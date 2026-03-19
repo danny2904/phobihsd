@@ -47,6 +47,9 @@ dist/
 # Keep only minimal reproducible split if needed.
 # Raw datasets are typically not committed.
 data/raw/
+!data/raw/
+!data/raw/*.csv
+!data/raw/README.md
 data/processed/
 
 # -----------------------------
