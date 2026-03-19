@@ -1,16 +1,16 @@
 # PhoBiHSD: Phát Hiện Ngôn Ngữ Thù Ghét Tiếng Việt Với PhoBERT-BiLSTM
 
-## Giới thiệu
+## 💡 Giới thiệu
 PhoBiHSD là repo nghiên cứu phát hiện hate speech tiếng Việt trên bộ dữ liệu ViHSD, tập trung vào mô hình đề xuất **PhoBERT-BiLSTM** và pipeline tái lập kết quả theo dạng luận văn.
 
-## Tính năng chính
+## ✨ Tính năng chính
 - Pipeline thí nghiệm tái lập được cho so sánh mô hình (Bảng 4.5) và tác động sampling (Bảng 4.6).
 - Hỗ trợ chạy trên `auto/cpu/cuda` qua biến `PHOBIHSD_DEVICE`.
 - Có web demo Gradio để suy luận nhanh.
 - Hỗ trợ Docker CPU/GPU và image prebuilt từ GHCR.
 - Tự tải checkpoint pretrained khi chạy app nếu máy chưa có file model.
 
-## Kiến trúc tổng quan
+## 🧠 Kiến trúc tổng quan
 ```mermaid
 flowchart LR
   A[ViHSD train/dev/test] --> B[Tiền xử lý văn bản]
@@ -23,7 +23,7 @@ flowchart LR
   E --> F[Demo Gradio]
 ```
 
-## Cài đặt
+## ⚙️ Cài đặt
 Yêu cầu khuyến nghị:
 - Python 3.10+
 - pip mới
@@ -40,7 +40,7 @@ Hoặc cài nhanh bằng script:
 bash scripts/bootstrap_env.sh
 ```
 
-## Chạy dự án
+## 🚀 Chạy dự án
 ### 1) Chạy thí nghiệm Bảng 4.5
 ```bash
 export PHOBIHSD_DEVICE=auto   # auto | cpu | cuda
@@ -87,7 +87,7 @@ docker compose -f docker-compose.ghcr.yml up -d
 - CPU: chạy file `windows/Run-PhoBiHSD.bat`
 - GPU: chạy file `windows/Run-PhoBiHSD-GPU.bat`
 
-## Cấu hình môi trường
+## 🔧 Cấu hình môi trường
 Biến môi trường quan trọng:
 - `PHOBIHSD_DEVICE`: `auto` | `cpu` | `cuda`
 - `PHOBIHSD_HOST`: host chạy Gradio (mặc định `0.0.0.0`)
@@ -100,7 +100,7 @@ Các file config chính:
 - `config/experiments/model_comparison.yaml`
 - `config/experiments/sampling_experiment.yaml`
 
-## Cấu trúc thư mục
+## 🗂️ Cấu trúc thư mục
 ```text
 phobihsd/
 ├── .github/workflows/           # GitHub Actions (build/push image)
@@ -121,7 +121,7 @@ phobihsd/
 └── requirements.txt
 ```
 
-## Hướng dẫn đóng góp
+## 🤝 Hướng dẫn đóng góp
 1. Tạo branch mới từ `main`.
 2. Giữ logic reproducible, ưu tiên config-driven.
 3. Trước khi tạo PR, chạy tối thiểu:
@@ -131,10 +131,11 @@ pytest -q
 ```
 4. Cập nhật README hoặc docs nếu có thay đổi flow chạy.
 
-## License
-Hiện repo chưa khai báo file `LICENSE` chính thức. Nên bổ sung `LICENSE` (ví dụ MIT/Apache-2.0) trước khi public rộng.
+## 📄 License
+Repo sử dụng giấy phép **MIT**.
+Xem chi tiết tại file [LICENSE](LICENSE).
 
-## Roadmap
+## 🛣️ Roadmap
 - Bổ sung CI kiểm tra test + smoke test inference.
 - Tinh gọn thêm pipeline và benchmark đa seed.
 - Chuẩn hóa model card + versioning cho nhiều checkpoint.
