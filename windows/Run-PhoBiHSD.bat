@@ -44,7 +44,14 @@ if not "%errorlevel%"=="0" (
 
 echo [1/4] Pulling image %IMAGE% ...
 %DOCKER_BIN% pull %IMAGE%
-if errorlevel 1 goto :error
+if not errorlevel 1 goto :pull_ok
+
+echo Pull failed once. Retrying after logout from ghcr.io ...
+%DOCKER_BIN% logout ghcr.io >nul 2>nul
+%DOCKER_BIN% pull %IMAGE%
+if errorlevel 1 goto :error_pull
+
+:pull_ok
 
 echo [2/4] Stopping old container if exists ...
 %DOCKER_BIN% rm -f %CONTAINER% >nul 2>nul
@@ -65,3 +72,13 @@ exit /b 0
 echo.
 echo Failed to run container. Ensure Docker Desktop is running.
 exit /b 1
+
+:error_pull
+echo.
+echo Failed to pull image from GHCR.
+echo Try login manually:
+echo   docker login ghcr.io -u YOUR_GITHUB_USERNAME
+echo then rerun this .bat file.
+echo.
+echo If package visibility is private, set package to Public in GitHub Packages.
+exit /b 2
