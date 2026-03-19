@@ -42,6 +42,9 @@ if not "%errorlevel%"=="0" (
   exit /b 11
 )
 
+echo [prep] Resetting GHCR auth cache to use anonymous pull (public image)...
+%DOCKER_BIN% logout ghcr.io >nul 2>nul
+
 echo [1/4] Pulling image %IMAGE% ...
 %DOCKER_BIN% pull %IMAGE%
 if not errorlevel 1 goto :pull_ok
@@ -76,9 +79,11 @@ exit /b 1
 :error_pull
 echo.
 echo Failed to pull image from GHCR.
-echo Try login manually:
-echo   docker login ghcr.io -u YOUR_GITHUB_USERNAME
-echo then rerun this .bat file.
+echo This image is public, so login is not required.
+echo Try clearing cached credentials in Docker Desktop and rerun:
+echo   Settings ^> Resources ^> Proxies/Credentials (or equivalent)
+echo   then: docker logout ghcr.io
 echo.
-echo If package visibility is private, set package to Public in GitHub Packages.
+echo If needed, verify manually:
+echo   docker pull %IMAGE%
 exit /b 2
