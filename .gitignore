@@ -55,8 +55,8 @@ data/processed/
 # -----------------------------
 # Model / checkpoint artifacts
 # -----------------------------
-models/
-checkpoints/
+/models/
+/checkpoints/
 *.ckpt
 *.pt
 *.pth

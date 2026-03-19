@@ -14,7 +14,7 @@ from safetensors.torch import load_file as safetensors_load_file
 from torch.nn import functional as F
 from transformers import AutoTokenizer
 
-from src.pipelines.run_model_comparison import PhoBertSequenceClassifier
+from src.models.phobert_bilstm import PhoBertSequenceClassifier
 from src.processing.text_preprocess import clean_text
 from src.core.device import resolve_torch_device
 
