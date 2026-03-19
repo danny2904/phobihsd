@@ -9,7 +9,7 @@ services:
       PHOBIHSD_HOST: 0.0.0.0
       PHOBIHSD_PORT: 7860
       PHOBIHSD_CONFIG: config/experiments/model_comparison.yaml
-      PHOBIHSD_PROPOSED_CKPT: models/phobihsd_proposed.pt
+      PHOBIHSD_PROPOSED_CKPT: models/phobihsd_proposed.safetensors
     ports:
       - "7860:7860"
     volumes:
