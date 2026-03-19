@@ -1,0 +1,17 @@
+services:
+  phobihsd-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    container_name: phobihsd-gpu
+    environment:
+      PHOBIHSD_DEVICE: cuda
+      PHOBIHSD_HOST: 0.0.0.0
+      PHOBIHSD_PORT: 7860
+      PHOBIHSD_CONFIG: config/experiments/model_comparison.yaml
+      PHOBIHSD_PROPOSED_CKPT: models/phobihsd_proposed.pt
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./:/workspace
+    gpus: all

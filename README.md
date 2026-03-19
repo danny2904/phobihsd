@@ -1,159 +1,141 @@
-# PhoBiHSD: A Hybrid PhoBERT BiLSTM Approach for Detecting Hate Speech in Imbalanced Vietnamese Social Media Texts
+# PhoBiHSD: Phát Hiện Ngôn Ngữ Thù Ghét Tiếng Việt Với PhoBERT-BiLSTM
 
-## Introduction
-PhoBiHSD is a research repository for Vietnamese hate speech detection on ViHSD with a reproducible thesis-style pipeline.
+## Giới thiệu
+PhoBiHSD là repo nghiên cứu phát hiện hate speech tiếng Việt trên bộ dữ liệu ViHSD, tập trung vào mô hình đề xuất **PhoBERT-BiLSTM** và pipeline tái lập kết quả theo dạng luận văn.
 
-Current experimental focus:
-- **Table 4.5**: primary model comparison between `PhoBERT` and `PhoBERT-BiLSTM (proposed)`.
-- **Table 4.6**: impact analysis of data balancing methods with fixed `PhoBERT-BiLSTM`.
+## Tính năng chính
+- Pipeline thí nghiệm tái lập được cho so sánh mô hình (Bảng 4.5) và tác động sampling (Bảng 4.6).
+- Hỗ trợ chạy trên `auto/cpu/cuda` qua biến `PHOBIHSD_DEVICE`.
+- Có web demo Gradio để suy luận nhanh.
+- Hỗ trợ Docker CPU/GPU và image prebuilt từ GHCR.
+- Tự tải checkpoint pretrained khi chạy app nếu máy chưa có file model.
 
-## Key Features
-- Reproducible experiment structure (`config/`, `src/`, `scripts/`, `results/`, `experiments/`).
-- Fixed train/dev/test workflow on local ViHSD split files.
-- Sampling methods implemented in code: `ROS`, `ROS+ENN`, `ROS+NearMiss`, `ROS+RUS`, `ROS+Tomek`.
-- Automatic metric/log/table exports for thesis reporting.
-- Remote worker friendly (tmux-based long runs).
-
-## Architecture Overview
+## Kiến trúc tổng quan
 ```mermaid
 flowchart LR
-  A[ViHSD Splits<br/>data/raw/train.csv dev.csv test.csv] --> B[Text Preprocess]
-  B --> C1[Table 4.5<br/>Model Comparison]
-  B --> C2[Table 4.6<br/>Sampling Impact]
-  C1 --> D1[PhoBERT vs PhoBERT-BiLSTM]
-  C2 --> D2[Fixed PhoBERT-BiLSTM + Sampling Methods]
-  D1 --> E[Results Tables / Metrics / Logs]
+  A[ViHSD train/dev/test] --> B[Tiền xử lý văn bản]
+  B --> C1[Pipeline Bảng 4.5]
+  B --> C2[Pipeline Bảng 4.6]
+  C1 --> D1[So sánh PhoBERT vs PhoBERT-BiLSTM]
+  C2 --> D2[PhoBERT-BiLSTM + Sampling]
+  D1 --> E[Kết quả CSV/JSON/Log]
   D2 --> E
+  E --> F[Demo Gradio]
 ```
 
-Main modules:
-- `src/pipelines/run_model_comparison.py`: Table 4.5 pipeline.
-- `src/pipelines/run_sampling_experiment.py`: Table 4.6 pipeline.
-- `src/pipelines/build_table_4_6_sampling_impact.py`: Table 4.6 analysis post-processing.
+## Cài đặt
+Yêu cầu khuyến nghị:
+- Python 3.10+
+- pip mới
+- (Tùy chọn) CUDA nếu muốn chạy GPU
 
-## Installation
-### 1) Create environment
+Cài dependencies:
 ```bash
-python -m venv .venv
-source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
-### 2) Install base dependencies
+Hoặc cài nhanh bằng script:
 ```bash
-pip install -r requirements.txt
+bash scripts/bootstrap_env.sh
 ```
 
-### 3) Install model dependencies (required for PhoBERT/BiLSTM)
+## Chạy dự án
+### 1) Chạy thí nghiệm Bảng 4.5
 ```bash
-pip install -r requirements-models.txt
-```
-
-## Run the Project
-### Run Table 4.5 (default: PhoBERT vs PhoBERT-BiLSTM)
-```bash
-make run-table-4-5
-```
-
-Equivalent command:
-```bash
+export PHOBIHSD_DEVICE=auto   # auto | cpu | cuda
 bash scripts/run_model_comparison.sh
 ```
 
-Output:
-- `results/tables/table_4_5_proposed_main.csv`
-- `results/metrics/model_comparison_table_4_5.json`
-- `results/logs/table_4_5_model_comparison.log`
-
-### Run Table 4.6 (PhoBIHSD + sampling methods)
+### 2) Chạy thí nghiệm Bảng 4.6
 ```bash
-make run-table-4-6
-```
-
-Equivalent command:
-```bash
+export PHOBIHSD_DEVICE=auto   # auto | cpu | cuda
 bash scripts/run_table_4_6_sampling_impact.sh
 ```
 
-Output:
-- `results/tables/table_4_6_sampling_impact.csv`
-- `results/tables/table_4_6_sampling_impact_detail.csv`
-- `results/tables/table_4_6_sampling_impact_analysis.md`
-- `results/metrics/sampling_table_4_6.json`
-- `results/figures/confusion_matrix_table_4_6.png`
-
-### Run Web Demo (Gradio, proposed model)
-Set checkpoint path, then start the web app:
+### 3) Chạy app Gradio
 ```bash
-export PHOBIHSD_PROPOSED_CKPT=models/phobihsd_proposed.pt
-export PHOBIHSD_CONFIG=config/experiments/model_comparison.yaml
+export PHOBIHSD_DEVICE=auto
+export PHOBIHSD_HOST=0.0.0.0
+export PHOBIHSD_PORT=7860
 bash scripts/run_gradio_app.sh
 ```
 
-Optional host/port:
+Mở app tại:
+- `http://localhost:7860`
+
+Ghi chú:
+- Nếu chưa có `models/phobihsd_proposed.pt`, script sẽ tự tải từ HF repo mặc định `joshswift/phobihsd-proposed`.
+
+### 4) Chạy Docker local (build từ source)
+CPU:
 ```bash
-export PHOBIHSD_HOST=0.0.0.0
-export PHOBIHSD_PORT=7860
+docker compose -f docker-compose.cpu.yml up --build -d
 ```
 
-Demo files:
-- `app/gradio_app.py`
-- `src/inference/proposed_predictor.py`
+GPU:
+```bash
+docker compose -f docker-compose.gpu.yml up --build -d
+```
 
-## Environment Configuration
-The main experiment configs:
-- `config/experiments/model_comparison.yaml` (Table 4.5)
-- `config/experiments/sampling_experiment.yaml` (Table 4.6)
+### 5) Chạy image prebuilt từ GHCR
+```bash
+docker compose -f docker-compose.ghcr.yml up -d
+```
 
-Expected dataset files:
-- `data/raw/train.csv`
-- `data/raw/dev.csv`
-- `data/raw/test.csv`
+### 6) 1-click trên Windows
+- CPU: chạy file `windows/Run-PhoBiHSD.bat`
+- GPU: chạy file `windows/Run-PhoBiHSD-GPU.bat`
 
-Expected columns:
-- text column: `free_text` or `text`
-- label column: `label_id` or `label`
+## Cấu hình môi trường
+Biến môi trường quan trọng:
+- `PHOBIHSD_DEVICE`: `auto` | `cpu` | `cuda`
+- `PHOBIHSD_HOST`: host chạy Gradio (mặc định `0.0.0.0`)
+- `PHOBIHSD_PORT`: cổng Gradio (mặc định `7860`)
+- `PHOBIHSD_PROPOSED_CKPT`: đường dẫn checkpoint local
+- `PHOBIHSD_CONFIG`: file config thí nghiệm
+- `PHOBIHSD_HF_REPO`: repo Hugging Face chứa pretrained (mặc định `joshswift/phobihsd-proposed`)
 
-## Directory Structure
+Các file config chính:
+- `config/experiments/model_comparison.yaml`
+- `config/experiments/sampling_experiment.yaml`
+
+## Cấu trúc thư mục
 ```text
 phobihsd/
-├── config/
-│   └── experiments/
-├── data/
-│   └── raw/
-├── docs/
-├── experiments/
-├── results/
-│   ├── tables/
-│   ├── metrics/
-│   ├── figures/
-│   ├── logs/
-│   └── archives/
-├── scripts/
-├── src/
-│   ├── core/
-│   ├── data/
-│   ├── processing/
-│   ├── evaluation/
-│   └── pipelines/
-├── tests/
-├── requirements.txt
-└── requirements-models.txt
+├── .github/workflows/           # GitHub Actions (build/push image)
+├── app/                         # Gradio app
+├── config/experiments/          # YAML cấu hình thí nghiệm
+├── data/                        # Dữ liệu
+├── docs/                        # Tài liệu
+├── experiments/                 # Registry chạy thí nghiệm
+├── results/                     # Kết quả
+├── scripts/                     # Script chạy pipeline, infer, publish
+├── src/                         # Mã nguồn chính
+├── windows/                     # 1-click launcher cho Windows
+├── Dockerfile.cpu
+├── Dockerfile.gpu
+├── docker-compose.cpu.yml
+├── docker-compose.gpu.yml
+├── docker-compose.ghcr.yml
+└── requirements.txt
 ```
 
-## Contribution Guide
-1. Create a branch for your change.
-2. Keep experiment logic reproducible (config-driven, deterministic seed).
-3. Run relevant commands before PR:
-   - `pytest -q`
-   - target pipeline command (`make run-table-4-5` or `make run-table-4-6`)
-4. Update report/table docs when experiment outputs change.
+## Hướng dẫn đóng góp
+1. Tạo branch mới từ `main`.
+2. Giữ logic reproducible, ưu tiên config-driven.
+3. Trước khi tạo PR, chạy tối thiểu:
+```bash
+python -m compileall src app scripts
+pytest -q
+```
+4. Cập nhật README hoặc docs nếu có thay đổi flow chạy.
 
 ## License
-License is not specified yet in this repository.
-If you plan to publish or distribute, add a `LICENSE` file (for example MIT/Apache-2.0) and update this section.
+Hiện repo chưa khai báo file `LICENSE` chính thức. Nên bổ sung `LICENSE` (ví dụ MIT/Apache-2.0) trước khi public rộng.
 
 ## Roadmap
-- Add dedicated TextCNN and BiGRU trainers to match full baseline table in one pipeline.
-- Add automatic markdown report sync from latest CSV/JSON artifacts.
-- Add CI checks for lint/tests/config validation.
-- Add checkpoint management for long multi-method training runs.
+- Bổ sung CI kiểm tra test + smoke test inference.
+- Tinh gọn thêm pipeline và benchmark đa seed.
+- Chuẩn hóa model card + versioning cho nhiều checkpoint.
+- Hoàn thiện tài liệu triển khai production.

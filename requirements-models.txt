@@ -1,5 +1,0 @@
-# Install this when implementing/running PhoBERT/BiLSTM training
-torch>=2.2
-transformers>=4.40
-
-gradio>=4.44

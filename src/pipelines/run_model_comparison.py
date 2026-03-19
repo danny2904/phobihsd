@@ -37,6 +37,7 @@ except Exception:  # pragma: no cover
     tqdm = None
 
 from src.core.reproducibility import set_seed
+from src.core.device import resolve_torch_device
 from src.processing.text_preprocess import preprocess_dataframe
 
 LABEL_MAP_ID2NAME = {0: "Clean", 1: "Offensive", 2: "Hate"}
@@ -804,14 +805,14 @@ def ids_to_labels(ids: Iterable[int]) -> List[str]:
     return [LABEL_MAP_ID2NAME[int(i)] for i in ids]
 
 
-def run(config_path: str, only_models: List[str] | None = None) -> None:
+def run(config_path: str, only_models: List[str] | None = None, device_pref: str = "auto") -> None:
     with open(config_path, "r", encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
 
     seed = int(cfg.get("seed", 42))
     set_seed(seed)
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = resolve_torch_device(device_pref)
     log_stage(f"device={device}")
     train_df, dev_df, test_df = load_splits(cfg["dataset"], lowercase=bool(cfg["preprocess"].get("lowercase", False)))
     log_stage(f"loaded splits train={len(train_df)} dev={len(dev_df)} test={len(test_df)}")
@@ -1038,6 +1039,13 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str, default="config/experiments/model_comparison.yaml")
     parser.add_argument(
+        "--device",
+        type=str,
+        default="auto",
+        choices=["auto", "cpu", "cuda"],
+        help="Compute device selection.",
+    )
+    parser.add_argument(
         "--only-models",
         type=str,
         default="",
@@ -1049,4 +1057,4 @@ def parse_args() -> argparse.Namespace:
 if __name__ == "__main__":
     args = parse_args()
     only_models = [x.strip() for x in args.only_models.split(",") if x.strip()]
-    run(args.config, only_models=only_models or None)
+    run(args.config, only_models=only_models or None, device_pref=args.device)

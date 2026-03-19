@@ -15,6 +15,7 @@ from transformers import AutoTokenizer
 
 from src.pipelines.run_model_comparison import PhoBertSequenceClassifier
 from src.processing.text_preprocess import clean_text
+from src.core.device import resolve_torch_device
 
 LABELS = ["Clean", "Offensive", "Hate"]
 
@@ -35,11 +36,11 @@ class ProposedPredictor:
         self,
         checkpoint_path: str,
         config_path: str = "config/experiments/model_comparison.yaml",
-        device: str | None = None,
+        device: str = "auto",
     ) -> None:
         self.checkpoint_path = Path(checkpoint_path)
         self.config_path = Path(config_path)
-        self.device = torch.device(device) if device else torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = resolve_torch_device(device)
 
         cfg = self._load_predictor_config()
         self.max_len = cfg.max_len

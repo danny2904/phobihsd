@@ -11,12 +11,13 @@ from src.inference.proposed_predictor import ProposedPredictor
 
 DEFAULT_CKPT = os.getenv("PHOBIHSD_PROPOSED_CKPT", "models/phobihsd_proposed.pt")
 DEFAULT_CFG = os.getenv("PHOBIHSD_CONFIG", "config/experiments/model_comparison.yaml")
+DEFAULT_DEVICE = os.getenv("PHOBIHSD_DEVICE", "auto")
 DEFAULT_HOST = os.getenv("PHOBIHSD_HOST", "0.0.0.0")
 DEFAULT_PORT = int(os.getenv("PHOBIHSD_PORT", "7860"))
 
 
 def load_predictor() -> ProposedPredictor:
-    return ProposedPredictor(checkpoint_path=DEFAULT_CKPT, config_path=DEFAULT_CFG)
+    return ProposedPredictor(checkpoint_path=DEFAULT_CKPT, config_path=DEFAULT_CFG, device=DEFAULT_DEVICE)
 
 
 PREDICTOR = None
@@ -59,7 +60,8 @@ def predict_text(text: str) -> Tuple[str, Dict[str, float], str]:
 
 DESCRIPTION = (
     "Enter a Vietnamese social-media sentence to classify into Clean / Offensive / Hate. "
-    "The app returns label, class probabilities, and toxicity level."
+    "The app returns label, class probabilities, and toxicity level. "
+    f"Runtime device mode: {DEFAULT_DEVICE}."
 )
 
 

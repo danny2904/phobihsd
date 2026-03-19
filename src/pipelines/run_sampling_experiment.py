@@ -18,6 +18,7 @@ from torch.utils.data import DataLoader
 from transformers import AutoTokenizer
 
 from src.core.reproducibility import set_seed
+from src.core.device import resolve_torch_device
 from src.evaluation.evaluate import save_confusion_matrix
 from src.pipelines.run_model_comparison import (
     PhoBertSequenceClassifier,
@@ -83,13 +84,13 @@ def append_registry(
         )
 
 
-def run(config_path: str) -> None:
+def run(config_path: str, device_pref: str = "auto") -> None:
     with open(config_path, "r", encoding="utf-8") as f:
         cfg = yaml.safe_load(f)
 
     seed = int(cfg.get("seed", 42))
     set_seed(seed)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = resolve_torch_device(device_pref)
     log_stage(f"table_4_6 device={device}")
 
     train_df, dev_df, test_df = load_splits(
@@ -273,9 +274,16 @@ def parse_args() -> argparse.Namespace:
         default="config/experiments/sampling_experiment.yaml",
         help="Path to table 4.6 sampling impact config YAML",
     )
+    parser.add_argument(
+        "--device",
+        type=str,
+        default="auto",
+        choices=["auto", "cpu", "cuda"],
+        help="Compute device selection.",
+    )
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     args = parse_args()
-    run(args.config)
+    run(args.config, device_pref=args.device)

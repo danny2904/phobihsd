@@ -1,0 +1,16 @@
+services:
+  phobihsd-cpu:
+    build:
+      context: .
+      dockerfile: Dockerfile.cpu
+    container_name: phobihsd-cpu
+    environment:
+      PHOBIHSD_DEVICE: cpu
+      PHOBIHSD_HOST: 0.0.0.0
+      PHOBIHSD_PORT: 7860
+      PHOBIHSD_CONFIG: config/experiments/model_comparison.yaml
+      PHOBIHSD_PROPOSED_CKPT: models/phobihsd_proposed.pt
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./:/workspace
