@@ -54,10 +54,17 @@ def _format_probs(prob: Dict[str, float]) -> Dict[str, float]:
 
 def predict_text(text: str) -> Tuple[str, Dict[str, float], str]:
     if LOAD_ERROR is not None or PREDICTOR is None:
+        extra = ""
+        if "Could not import module 'RobertaModel'" in str(LOAD_ERROR):
+            extra = (
+                " Runtime dependency mismatch detected. "
+                "Please pull/rebuild the latest Docker image and restart."
+            )
         msg = (
             "Model not loaded. "
             f"Error: {LOAD_ERROR}. "
             "Set PHOBIHSD_PROPOSED_CKPT to a valid proposed checkpoint path."
+            f"{extra}"
         )
         return msg, {"Clean": 0.0, "Offensive": 0.0, "Hate": 0.0}, ""
 
@@ -117,6 +124,7 @@ body, .gradio-container {
   margin: 0 0 8px 0;
   font-size: 36px;
   line-height: 1.2;
+  color: #0f172a !important;
 }
 
 .phb-hero p {
@@ -135,6 +143,7 @@ body, .gradio-container {
 .phb-card h3 {
   margin: 6px 6px 10px 6px;
   font-size: 22px;
+  color: #0f172a !important;
 }
 
 .phb-footnote {
@@ -161,6 +170,11 @@ textarea, input, .gr-textbox, .gr-label, .gr-markdown, .gr-form {
 label span {
   font-size: 17px !important;
   font-weight: 600 !important;
+  color: #0f172a !important;
+}
+
+.gr-markdown h1, .gr-markdown h2, .gr-markdown h3, .gr-markdown p {
+  color: #0f172a !important;
 }
 """
 
