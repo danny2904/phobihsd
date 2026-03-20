@@ -1,0 +1,205 @@
+{
+  "scan_id": 31914937,
+  "status": {
+    "data": {
+      "id": 31914937,
+      "version": null,
+      "filename": "PhoBiHSD: A Hybrid",
+      "created_at": "1773297816000",
+      "updated_at": "1773297831000",
+      "submitted_at": "1773297817000",
+      "is_deleted": false,
+      "deleted_at": null,
+      "state": 5,
+      "language": "en",
+      "pages": 1,
+      "words": 137,
+      "group_id": null,
+      "custom_author": null,
+      "creator": {
+        "id": 5615245,
+        "name": "Josh Swift",
+        "email": "dannythanhfore@gmail.com",
+        "created_at": "1773297383000",
+        "updated_at": "1773297393000",
+        "is_blocked": false,
+        "allowed_languages": [
+          "en",
+          "de",
+          "es",
+          "pt",
+          "fr",
+          "tr",
+          "nl",
+          "et",
+          "fi",
+          "it",
+          "lv",
+          "no",
+          "sv"
+        ],
+        "balance_type": 1,
+        "balance": {
+          "balance": 0,
+          "bonus": 0,
+          "hold": 0,
+          "hold_bonus": 0,
+          "ai_balance": 0
+        },
+        "orders": 0,
+        "not_ai_orders": 0,
+        "last_ai_order_paid_days_ago": null,
+        "avatar": "https://lh3.googleusercontent.com/a/ACg8ocIxRZYTmF-YdJdIxENNWRAqkaNFl3gh5m69bp5o-QeuGawjvxPuQQ=s96-c",
+        "sale_role": null,
+        "ai_checks_enabled": true,
+        "is_guest": false,
+        "is_change_password_needed": false,
+        "is_email_verification_needed": false
+      },
+      "report": {
+        "id": 31777627,
+        "version": null,
+        "created_at": "1773297831000",
+        "source_count": 0,
+        "percent": "0.00"
+      },
+      "ai_report": {
+        "id": 18807769,
+        "status": 4,
+        "processed_percent": "99.70",
+        "strong_percent": "99.70",
+        "likely_percent": "0.00",
+        "type": 3,
+        "created_at": 1773297817000,
+        "words": null,
+        "pages": null,
+        "parameters": [],
+        "enabled": true,
+        "percent": null,
+        "comment": null,
+        "has_own_content": false,
+        "comment_author": null,
+        "chunks": [
+          {
+            "position": [
+              0,
+              550
+            ],
+            "reliability": 2
+          },
+          {
+            "position": [
+              552,
+              1003
+            ],
+            "reliability": 2
+          }
+        ],
+        "conclusion_type": 5,
+        "conclusion": "AI content detected",
+        "mark": null,
+        "group_id": null,
+        "creator": {
+          "id": 5615245,
+          "name": "Josh Swift",
+          "email": "dannythanhfore@gmail.com",
+          "created_at": "1773297383000",
+          "updated_at": "1773297393000",
+          "is_blocked": false,
+          "allowed_languages": [
+            "en",
+            "de",
+            "es",
+            "pt",
+            "fr",
+            "tr",
+            "nl",
+            "et",
+            "fi",
+            "it",
+            "lv",
+            "no",
+            "sv"
+          ],
+          "balance_type": 1,
+          "balance": {
+            "balance": 0,
+            "bonus": 0,
+            "hold": 0,
+            "hold_bonus": 0,
+            "ai_balance": 0
+          },
+          "orders": 0,
+          "not_ai_orders": 0,
+          "last_ai_order_paid_days_ago": null,
+          "avatar": "https://lh3.googleusercontent.com/a/ACg8ocIxRZYTmF-YdJdIxENNWRAqkaNFl3gh5m69bp5o-QeuGawjvxPuQQ=s96-c",
+          "sale_role": null,
+          "ai_checks_enabled": true,
+          "is_guest": false,
+          "is_change_password_needed": false,
+          "is_email_verification_needed": false
+        }
+      }
+    }
+  },
+  "report": {
+    "success": true,
+    "data": {
+      "report": {
+        "id": 31777627,
+        "version": null,
+        "created_at": "1773297831000",
+        "source_count": 0,
+        "percent": "0.00",
+        "text_id": 31914937,
+        "group_id": null
+      },
+      "report_data": {
+        "version": "1.1",
+        "length": 1004,
+        "created_at": "2026-03-12 01:43:50",
+        "nodes": [
+          {
+            "enabled": true,
+            "start": 0,
+            "end": 1003,
+            "sources": [],
+            "sources_improved": [],
+            "references": [],
+            "headers": [],
+            "quotes": [],
+            "text": "PhoBiHSD: A Hybrid PhoBERT BiLSTM Approach for Detecting Hate Speech in Imbalanced Vietnamese Social Media Texts Doan Viet Thien Graduate Program in Information Technology, Cuu Long University, Vietnam Email: nguyenvietthien@gmail.com Abstract Hate speech detection in Vietnamese social media remains challenging due to severe class imbalance and the informal nature of user-generated text. Existing Vietnamese hate speech studies mainly rely on standard Transformer classifiers and provide limited analysis of hybrid designs for imbalance robustness. This study proposes PhoBiHSD (PhoBERT + BiLSTM + ROS), which combines PhoBERT contextual representations with a BiLSTM sequence layer and systematic train-only imbalance handling. Experiments on the ViHSD benchmark (33,400 annotated comments; three-class classification: Clean, Offensive, Hate) show that PhoBiHSD reaches a Macro-F1 of 0.6556 on the test set, outperforming the PhoBERT + BiLSTM baseline (0.6457) and GPT-4o few-shot prompting (0.6282).",
+            "destinations_clusters": []
+          }
+        ],
+        "indexes": [
+          {
+            "id": 0,
+            "db_id": 7,
+            "name": "",
+            "status": "success",
+            "queries": 2,
+            "type": "external"
+          },
+          {
+            "id": 1,
+            "db_id": 5,
+            "name": "",
+            "status": "success",
+            "queries": 1,
+            "type": "external"
+          }
+        ],
+        "references": [],
+        "header": [],
+        "quotes": [],
+        "sources": [],
+        "sources_count": 0,
+        "matched_length": 0,
+        "matched_percent": 0,
+        "external_queries": 3,
+        "destinations_clusters": []
+      }
+    }
+  }
+}

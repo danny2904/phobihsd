@@ -1,0 +1,123 @@
+TY  - JOUR
+TI  - Learning from Imbalanced Data
+AU  - He, Haibo
+AU  - Garcia, Edwardo A.
+JO  - IEEE Transactions on Knowledge and Data Engineering
+PY  - 2009
+VL  - 21
+IS  - 9
+SP  - 1263
+EP  - 1284
+DO  - 10.1109/TKDE.2008.239
+ER  -
+
+TY  - JOUR
+TI  - A Survey of Predictive Modeling on Imbalanced Domains
+AU  - Branco, Paula
+AU  - Torgo, Luis
+AU  - Ribeiro, Rita P.
+JO  - ACM Computing Surveys
+PY  - 2016
+VL  - 49
+IS  - 2
+DO  - 10.1145/2907070
+ER  -
+
+TY  - BOOK
+TI  - Learning from Imbalanced Data Sets
+AU  - Fernandez, Alberto
+AU  - Garcia, Salvador
+AU  - Galar, Mikel
+AU  - Prati, Ronaldo C.
+AU  - Krawczyk, Bartosz
+AU  - Herrera, Francisco
+PY  - 2018
+PB  - Springer
+DO  - 10.1007/978-3-319-98074-4
+ER  -
+
+TY  - JOUR
+TI  - A study of the behavior of several methods for balancing machine learning training data
+AU  - Batista, Gustavo E. A. P. A.
+AU  - Prati, Ronaldo C.
+AU  - Monard, Maria Carolina
+JO  - ACM SIGKDD Explorations Newsletter
+PY  - 2004
+VL  - 6
+IS  - 1
+SP  - 20
+EP  - 29
+DO  - 10.1145/1007730.1007735
+ER  -
+
+TY  - JOUR
+TI  - Asymptotic Properties of Nearest Neighbor Rules Using Edited Data
+AU  - Wilson, Dennis L.
+JO  - IEEE Transactions on Systems, Man, and Cybernetics
+PY  - 1972
+VL  - SMC-2
+IS  - 3
+SP  - 408
+EP  - 421
+DO  - 10.1109/TSMC.1972.4309137
+ER  -
+
+TY  - JOUR
+TI  - Two Modifications of CNN
+AU  - Tomek, Ivan
+JO  - IEEE Transactions on Systems, Man, and Cybernetics
+PY  - 1976
+VL  - SMC-6
+IS  - 11
+SP  - 769
+EP  - 772
+DO  - 10.1109/TSMC.1976.4309452
+ER  -
+
+TY  - CPAPER
+TI  - kNN approach to unbalanced data distributions: A case study involving information extraction
+AU  - Mani, Inderjeet
+AU  - Zhang, I.
+T2  - ICML 2003 Workshop on Learning from Imbalanced Datasets
+PY  - 2003
+ER  -
+
+TY  - CPAPER
+TI  - A Survey of Methods for Addressing Class Imbalance in Deep-Learning Based Natural Language Processing
+AU  - Henning, Sophie
+AU  - Beluch, William
+AU  - Fraser, Alexander
+AU  - Friedrich, Annemarie
+T2  - Proceedings of the 17th Conference of the European Chapter of the Association for Computational Linguistics
+PY  - 2023
+DO  - 10.18653/v1/2023.eacl-main.38
+ER  -
+
+TY  - JOUR
+TI  - Data oversampling and imbalanced datasets: an investigation of performance for machine learning and feature engineering
+AU  - Mujahid, Muhammad
+AU  - Kina, Erol
+AU  - Rustam, Furqan
+AU  - Villar, Monica Gracia
+AU  - Alvarado, Eduardo Silva
+AU  - De La Torre Diez, Isabel
+AU  - Ashraf, Imran
+JO  - Journal of Big Data
+PY  - 2024
+VL  - 11
+IS  - 1
+DO  - 10.1186/s40537-024-00943-4
+ER  -
+
+TY  - JOUR
+TI  - A comprehensive evaluation of oversampling techniques for enhancing text classification performance
+AU  - Taskiran, Salimkan Fatma
+AU  - Turkoglu, Bahaeddin
+AU  - Kaya, Ersin
+AU  - Asuroglu, Tunc
+JO  - Scientific Reports
+PY  - 2025
+VL  - 15
+IS  - 1
+DO  - 10.1038/s41598-025-05791-7
+ER  -

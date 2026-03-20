@@ -1,0 +1,8 @@
+{
+  "manuscript": "/home/ubuntu/project/phobihsd/docs/manuscripts/PhoBiHSD_A_Hybrid_PhoBERT_BiLSTM_Approach_for_Detecting_Hate_Speech_in_Imbalanced_Vietnamese_Social_Media_Texts.docx",
+  "mode": "both",
+  "excerpt_chars": 1004,
+  "excerpt_preview": "PhoBiHSD: A Hybrid PhoBERT BiLSTM Approach for Detecting Hate Speech in Imbalanced Vietnamese Social Media Texts Doan Viet Thien Graduate Program in Information Technology, Cuu Long University, Vietnam Email: nguyenvietthien@gmail.com Abstract Hate speech detection in Vietnamese ",
+  "plagiarism_error": "Cannot find plagiarism scan id in response: {'success': True, 'data': {'text': {'id': 31914937, 'version': None, 'filename': 'PhoBiHSD: A Hybrid', 'created_at': '1773297816000', 'updated_at': '1773297817000', 'submitted_at': '1773297817000', 'is_deleted': False, 'deleted_at': None, 'state': 3, 'language': 'en', 'pages': 1, 'words': 137, 'group_id': None, 'custom_author': None, 'user_id': 5615245, 'report_id': None, 'ai_report_id': None}, 'charged': 0, 'bonus_charged': 1, 'groupId': None}}",
+  "ai_detector_error": "HTTP 400 https://plagiarismcheck.org/api/v1/chat-gpt/: {\"success\":false,\"code\":1,\"message\":\"Ai package is needed\"}"
+}

@@ -1,0 +1,139 @@
+TY  - JOUR
+AU  - LeCun, Yann
+AU  - Bengio, Yoshua
+AU  - Hinton, Geoffrey
+PY  - 2015
+TI  - Deep learning
+JO  - Nature
+VL  - 521
+IS  - 7553
+DO  - 10.1038/nature14539
+ER  -
+
+TY  - JOUR
+AU  - Hochreiter, Sepp
+AU  - Schmidhuber, Juergen
+PY  - 1997
+TI  - Long Short-Term Memory
+JO  - Neural Computation
+VL  - 9
+IS  - 8
+DO  - 10.1162/neco.1997.9.8.1735
+ER  -
+
+TY  - JOUR
+AU  - Schuster, Mike
+AU  - Paliwal, Kuldip K.
+PY  - 1997
+TI  - Bidirectional recurrent neural networks
+JO  - IEEE Transactions on Signal Processing
+VL  - 45
+IS  - 11
+DO  - 10.1109/78.650093
+ER  -
+
+TY  - CONF
+AU  - Kim, Yoon
+PY  - 2014
+TI  - Convolutional Neural Networks for Sentence Classification
+T2  - Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP)
+DO  - 10.3115/v1/D14-1181
+ER  -
+
+TY  - CONF
+AU  - Pennington, Jeffrey
+AU  - Socher, Richard
+AU  - Manning, Christopher
+PY  - 2014
+TI  - GloVe: Global Vectors for Word Representation
+T2  - Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP)
+DO  - 10.3115/v1/D14-1162
+ER  -
+
+TY  - CONF
+AU  - Cho, Kyunghyun
+AU  - van Merrienboer, Bart
+AU  - Gulcehre, Caglar
+AU  - Bahdanau, Dzmitry
+AU  - Bougares, Fethi
+AU  - Schwenk, Holger
+AU  - Bengio, Yoshua
+PY  - 2014
+TI  - Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation
+T2  - Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP)
+DO  - 10.3115/v1/D14-1179
+ER  -
+
+TY  - CONF
+AU  - Luong, Thang
+AU  - Pham, Hieu
+AU  - Manning, Christopher D.
+PY  - 2015
+TI  - Effective Approaches to Attention-based Neural Machine Translation
+T2  - Proceedings of the 2015 Conference on Empirical Methods in Natural Language Processing
+DO  - 10.18653/v1/D15-1166
+ER  -
+
+TY  - CONF
+AU  - Yang, Zichao
+AU  - Yang, Diyi
+AU  - Dyer, Chris
+AU  - He, Xiaodong
+AU  - Smola, Alex
+AU  - Hovy, Eduard
+PY  - 2016
+TI  - Hierarchical Attention Networks for Document Classification
+T2  - Proceedings of NAACL-HLT 2016
+DO  - 10.18653/v1/N16-1174
+ER  -
+
+TY  - CONF
+AU  - Park, Ji Ho
+AU  - Fung, Pascale
+PY  - 2017
+TI  - One-step and Two-step Classification for Abusive Language Detection on Twitter
+T2  - Proceedings of the First Workshop on Abusive Language Online
+DO  - 10.18653/v1/W17-3006
+ER  -
+
+TY  - CONF
+AU  - Gambaeck, Bjoern
+AU  - Sikdar, Utpal Kumar
+PY  - 2017
+TI  - Using Convolutional Neural Networks to Classify Hate-Speech
+T2  - Proceedings of the First Workshop on Abusive Language Online
+DO  - 10.18653/v1/W17-3013
+ER  -
+
+TY  - CHAP
+AU  - Agrawal, Sweta
+AU  - Awekar, Amit
+PY  - 2018
+TI  - Deep Learning for Detecting Cyberbullying Across Multiple Social Media Platforms
+T2  - Lecture Notes in Computer Science
+DO  - 10.1007/978-3-319-76941-7_11
+ER  -
+
+TY  - JOUR
+AU  - Roy, Pradeep Kumar
+AU  - Tripathy, Asis Kumar
+AU  - Das, Tapan Kumar
+AU  - Gao, Xiao-Zhi
+PY  - 2020
+TI  - A Framework for Hate Speech Detection Using Deep Convolutional Neural Network
+JO  - IEEE Access
+VL  - 8
+DO  - 10.1109/access.2020.3037073
+ER  -
+
+TY  - JOUR
+AU  - Patil, Rajvardhan
+AU  - Boit, Sorio
+AU  - Gudivada, Venkat
+AU  - Nandigam, Jagadeesh
+PY  - 2023
+TI  - A Survey of Text Representation and Embedding Techniques in NLP
+JO  - IEEE Access
+VL  - 11
+DO  - 10.1109/access.2023.3266377
+ER  -

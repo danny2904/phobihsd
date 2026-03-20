@@ -1,0 +1,170 @@
+TY  - JOUR
+AU  - Rahali, Abir
+AU  - Akhloufi, Moulay A.
+PY  - 2023
+TI  - End-to-End Transformer-Based Models in Textual-Based NLP
+JO  - AI
+VL  - 4
+IS  - 1
+DO  - 10.3390/ai4010004
+ER  -
+
+TY  - CONF
+AU  - Devlin, Jacob
+AU  - Chang, Ming-Wei
+AU  - Lee, Kenton
+AU  - Toutanova, Kristina
+PY  - 2019
+TI  - BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding
+T2  - NAACL-HLT 2019
+DO  - 10.18653/v1/N19-1423
+ER  -
+
+TY  - JOUR
+AU  - Liu, Pengfei
+AU  - Yuan, Weizhe
+AU  - Fu, Jinlan
+AU  - Jiang, Zhengbao
+AU  - Hayashi, Hiroaki
+AU  - Neubig, Graham
+PY  - 2023
+TI  - Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing
+JO  - ACM Computing Surveys
+VL  - 55
+IS  - 9
+DO  - 10.1145/3560815
+ER  -
+
+TY  - CONF
+AU  - Conneau, Alexis
+AU  - Khandelwal, Kartikay
+AU  - Goyal, Naman
+AU  - Chaudhary, Vishrav
+AU  - Wenzek, Guillaume
+PY  - 2020
+TI  - Unsupervised Cross-lingual Representation Learning at Scale
+T2  - ACL 2020
+DO  - 10.18653/v1/2020.acl-main.747
+ER  -
+
+TY  - CONF
+AU  - Nguyen, Dat Quoc
+AU  - Nguyen, Anh Tuan
+PY  - 2020
+TI  - PhoBERT: Pre-trained language models for Vietnamese
+T2  - Findings of EMNLP 2020
+DO  - 10.18653/v1/2020.findings-emnlp.92
+ER  -
+
+TY  - JOUR
+AU  - Mozafari, Marzieh
+AU  - Farahbakhsh, Reza
+AU  - Crespi, Noel
+PY  - 2020
+TI  - Hate speech detection and racial bias mitigation in social media based on BERT model
+JO  - PLOS ONE
+VL  - 15
+IS  - 8
+DO  - 10.1371/journal.pone.0237861
+ER  -
+
+TY  - JOUR
+AU  - Bilal, Muhammad
+AU  - Khan, Atif
+AU  - Jan, Salman
+AU  - Musa, Shahrulniza
+AU  - Ali, Shaukat
+PY  - 2023
+TI  - Roman Urdu Hate Speech Detection Using Transformer-Based Model for Cyber Security Applications
+JO  - Sensors
+VL  - 23
+IS  - 8
+DO  - 10.3390/s23083909
+ER  -
+
+TY  - CONF
+AU  - Weidinger, Laura
+AU  - Uesato, Jonathan
+AU  - Rauh, Maribeth
+AU  - Griffin, Conor
+PY  - 2022
+TI  - Taxonomy of Risks posed by Language Models
+T2  - ACM Conference on Fairness, Accountability, and Transparency
+DO  - 10.1145/3531146.3533088
+ER  -
+
+TY  - JOUR
+AU  - Navigli, Roberto
+AU  - Conia, Simone
+AU  - Ross, Bjorn
+PY  - 2023
+TI  - Biases in Large Language Models: Origins, Inventory, and Discussion
+JO  - Journal of Data and Information Quality
+VL  - 15
+IS  - 2
+DO  - 10.1145/3597307
+ER  -
+
+TY  - JOUR
+AU  - Yang, Jingfeng
+AU  - Jin, Hongye
+AU  - Tang, Ruixiang
+AU  - Han, Xiaotian
+AU  - Feng, Qizhang
+PY  - 2024
+TI  - Harnessing the Power of LLMs in Practice: A Survey on ChatGPT and Beyond
+JO  - ACM Transactions on Knowledge Discovery from Data
+VL  - 18
+IS  - 6
+DO  - 10.1145/3649506
+ER  -
+
+TY  - CONF
+AU  - Ustun, Ahmet
+AU  - Aryabumi, Viraat
+AU  - Yong, Zheng
+AU  - Ko, Wei-Yin
+PY  - 2024
+TI  - Aya Model: An Instruction Finetuned Open-Access Multilingual Language Model
+T2  - ACL 2024 (Long Papers)
+DO  - 10.18653/v1/2024.acl-long.845
+ER  -
+
+TY  - JOUR
+AU  - Qin, Libo
+AU  - Chen, Qiguang
+AU  - Zhou, Yuhang
+AU  - Chen, Zhi
+AU  - Li, Yinghui
+PY  - 2025
+TI  - A survey of multilingual large language models
+JO  - Patterns
+VL  - 6
+IS  - 1
+DO  - 10.1016/j.patter.2024.101118
+ER  -
+
+TY  - JOUR
+AU  - Augenstein, Isabelle
+AU  - Baldwin, Timothy
+AU  - Cha, Meeyoung
+AU  - Chakraborty, Tanmoy
+PY  - 2024
+TI  - Factuality challenges in the era of large language models and opportunities for fact-checking
+JO  - Nature Machine Intelligence
+VL  - 6
+IS  - 8
+DO  - 10.1038/s42256-024-00881-z
+ER  -
+
+TY  - CONF
+AU  - Zhang, Duzhen
+AU  - Yu, Yahan
+AU  - Dong, Jiahua
+AU  - Li, Chenxing
+AU  - Su, Dan
+PY  - 2024
+TI  - MM-LLMs: Recent Advances in MultiModal Large Language Models
+T2  - Findings ACL 2024
+DO  - 10.18653/v1/2024.findings-acl.738
+ER  -
