@@ -1,0 +1,86 @@
+<mxfile host="app.diagrams.net" modified="2026-03-26T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="imbalance-pipeline" name="Hinh 3.7">
+    <mxGraphModel dx="1600" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1800" math="1" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Hình 3.7. Quy trình xử lý mất cân bằng dữ liệu" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=22;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="200" y="10" width="1000" height="36" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="raw" value="Raw Dataset (ViHSD)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="80" width="500" height="72" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="split" value="Train/Test Split" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="190" width="500" height="72" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="train" value="Training Set" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="300" width="500" height="72" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="module_title" value="Imbalance Handling Module" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="410" width="500" height="72" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="module_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#666666;strokeWidth=2" vertex="1" parent="1">
+          <mxGeometry x="300" y="510" width="800" height="430" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="group_over" value="Oversampling Methods" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="340" y="545" width="300" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="item_ros" value="- Random Over Sampling (ROS)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13" vertex="1" parent="1">
+          <mxGeometry x="360" y="575" width="360" height="24" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="group_under" value="Undersampling Methods" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="340" y="640" width="320" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="item_rus" value="- Random Under Sampling (RUS)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13" vertex="1" parent="1">
+          <mxGeometry x="360" y="670" width="370" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="item_nearmiss" value="- NearMiss" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13" vertex="1" parent="1">
+          <mxGeometry x="360" y="700" width="220" height="24" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="group_clean" value="Data Cleaning Methods" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="340" y="770" width="320" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="item_enn" value="- Edited Nearest Neighbours (ENN)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13" vertex="1" parent="1">
+          <mxGeometry x="360" y="800" width="390" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="item_tomek" value="- Tomek Links" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=13" vertex="1" parent="1">
+          <mxGeometry x="360" y="830" width="230" height="24" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="balanced" value="Balanced Training Set" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="980" width="500" height="72" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="train_model" value="Model Training (PhoBERT)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="1090" width="500" height="72" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="eval" value="Evaluation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="1200" width="500" height="72" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="caption" value="Hình 3.7. Quy trình xử lý mất cân bằng dữ liệu trong giai đoạn huấn luyện, bao gồm các kỹ thuật oversampling, undersampling và làm sạch dữ liệu nhằm tái phân phối lại tập huấn luyện trước khi đưa vào mô hình PhoBERT." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=12;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="180" y="1320" width="1040" height="56" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_raw_split" style="endArrow=block;endFill=1;strokeWidth=2;html=1" edge="1" parent="1" source="raw" target="split"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_split_train" style="endArrow=block;endFill=1;strokeWidth=2;html=1" edge="1" parent="1" source="split" target="train"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_train_module" style="endArrow=block;endFill=1;strokeWidth=2;html=1" edge="1" parent="1" source="train" target="module_title"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_module_title_box" style="endArrow=block;endFill=1;strokeWidth=2;html=1" edge="1" parent="1" source="module_title" target="module_box"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_box_balanced" style="endArrow=block;endFill=1;strokeWidth=2;html=1" edge="1" parent="1" source="module_box" target="balanced"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_bal_trainmodel" style="endArrow=block;endFill=1;strokeWidth=2;html=1" edge="1" parent="1" source="balanced" target="train_model"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_trainmodel_eval" style="endArrow=block;endFill=1;strokeWidth=2;html=1" edge="1" parent="1" source="train_model" target="eval"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

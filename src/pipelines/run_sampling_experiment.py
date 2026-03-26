@@ -104,9 +104,11 @@ def run(config_path: str, device_pref: str = "auto") -> None:
     output_metrics = Path(outputs["metrics_json"])
     output_logs = Path(outputs["log_txt"])
     output_fig = Path(outputs["confusion_matrix_png"])
+    output_fig_dir = Path(outputs.get("confusion_matrix_dir", output_fig.parent / "sampling_methods"))
     output_registry = Path(outputs["registry_csv"])
     for p in [output_table, output_metrics, output_logs, output_fig]:
         p.parent.mkdir(parents=True, exist_ok=True)
+    output_fig_dir.mkdir(parents=True, exist_ok=True)
 
     model_cfg = cfg.get("model", {})
     model_name = str(model_cfg.get("model_name", "vinai/phobert-base-v2"))
@@ -194,6 +196,15 @@ def run(config_path: str, device_pref: str = "auto") -> None:
         )
         pred = ids_to_labels(predict_torch_transformer_with_thresholds(model, te_loader, device, thresholds))
         m = compute_metrics(test_df["label"], pred)
+        method_slug = method_key.lower().replace("+", "_")
+        method_cm_path = output_fig_dir / f"confusion_matrix_{method_slug}.png"
+        save_confusion_matrix(
+            y_true=test_df["label"].to_numpy(),
+            y_pred=np.asarray(pred),
+            class_names=sorted(test_df["label"].unique().tolist()),
+            output_path=method_cm_path,
+            title=f"{method_label} - PhoBERT-BiLSTM",
+        )
 
         stats = class_distribution(y_res)
         rows.append(
@@ -208,6 +219,7 @@ def run(config_path: str, device_pref: str = "auto") -> None:
         all_metrics[method_label] = {
             **m,
             "method_key": method_key,
+            "confusion_matrix_png": str(method_cm_path),
             "n_samples_after_sampling": int(len(y_res)),
             "class_distribution_after_sampling": stats,
             "thresholds": thresholds.tolist(),

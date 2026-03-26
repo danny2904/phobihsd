@@ -1,0 +1,104 @@
+<mxfile host="app.diagrams.net" modified="2026-03-26T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="train-flow" name="Hinh 3.5">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1200" math="1" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Hinh 3.5. Quy trinh huan luyen mo hinh PhoBERT-Bi-LSTM" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="220" y="10" width="960" height="32" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="start" value="Du lieu da tien xu ly\n(can bang lop)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="510" y="70" width="380" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="split" value="Chia du lieu\nTrain / Validation / Test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="510" y="175" width="380" height="70" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="trainset" value="Training set" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="140" y="290" width="220" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="valset" value="Validation set" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="590" y="290" width="220" height="56" as="geometry"/>
+        </mxCell>
+        <mxCell id="testset" value="Test set" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="1040" y="290" width="220" height="56" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="epoch" value="Lap theo Epoch\n(Forward + Backward)" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="385" width="260" height="86" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="forward" value="Forward propagation\nPhoBERT -> Bi-LSTM -> Classifier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="110" y="505" width="280" height="76" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="loss" value="Tinh Loss\nCategorical Cross-Entropy" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="110" y="615" width="280" height="76" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="backprop" value="Backpropagation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="110" y="725" width="280" height="60" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="update" value="Cap nhat tham so\nOptimizer: Adam / GD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="110" y="820" width="280" height="76" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="valeval" value="Danh gia tren Validation\n(sau moi epoch)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="560" y="505" width="280" height="76" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="decision" value="Hoi tu / dung som?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="560" y="635" width="280" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="trained" value="Mo hinh da huan luyen" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="940" y="820" width="260" height="68" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="testeval" value="Du doan tren Test set\nva tinh chi so danh gia\n(Accuracy, F1, Precision, Recall)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="940" y="930" width="300" height="96" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="end" value="Ket qua cuoi cung" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="980" y="1060" width="220" height="56" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e_start_split" style="endArrow=block;endFill=1;strokeWidth=1.8;html=1" edge="1" parent="1" source="start" target="split"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e_split_train" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="split" target="trainset"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_split_val" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="split" target="valset"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_split_test" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="split" target="testset"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e_train_epoch" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="trainset" target="epoch"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_epoch_forward" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="epoch" target="forward"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_forward_loss" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="forward" target="loss"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_loss_back" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="loss" target="backprop"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_back_update" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="backprop" target="update"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e_val_to_eval" value="dung val de theo doi" style="endArrow=block;endFill=1;strokeWidth=1.4;dashed=1;html=1;fontSize=11" edge="1" parent="1" source="valset" target="valeval"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_update_valeval" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="update" target="valeval"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_valeval_decision" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="valeval" target="decision"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e_decision_loop" value="Chua" style="endArrow=block;endFill=1;strokeWidth=1.6;dashed=1;html=1;fontSize=11;edgeStyle=orthogonalEdgeStyle" edge="1" parent="1" source="decision" target="epoch">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="520" y="690"/>
+              <mxPoint x="520" y="428"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e_decision_yes" value="Da" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1;fontSize=11" edge="1" parent="1" source="decision" target="trained"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+        <mxCell id="e_test_trained" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="testset" target="testeval"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_trained_test" style="endArrow=block;endFill=1;strokeWidth=1.6;html=1" edge="1" parent="1" source="trained" target="testeval"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e_test_end" style="endArrow=block;endFill=1;strokeWidth=1.8;html=1" edge="1" parent="1" source="testeval" target="end"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
