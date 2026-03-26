@@ -9,7 +9,7 @@ import pandas as pd
 URL_PATTERN = re.compile(r"https?://\S+|www\.\S+", re.IGNORECASE)
 WHITESPACE_PATTERN = re.compile(r"\s+")
 PUNCT_REPEAT_PATTERN = re.compile(r"([!?.,;:])\1+")
-# Remove only control characters; keep Unicode symbols such as emoji.
+# Remove only control characters while preserving regular Unicode text.
 NOISE_PATTERN = re.compile(r"[\u0000-\u001F\u007F]")
 
 
