@@ -9,8 +9,8 @@ import pandas as pd
 URL_PATTERN = re.compile(r"https?://\S+|www\.\S+", re.IGNORECASE)
 WHITESPACE_PATTERN = re.compile(r"\s+")
 PUNCT_REPEAT_PATTERN = re.compile(r"([!?.,;:])\1+")
-# Keep letters/numbers/space and common Vietnamese characters.
-NOISE_PATTERN = re.compile(r"[^0-9A-Za-zÀ-ỹà-ỹ\s!?.,;:()\-_/]")
+# Remove only control characters; keep Unicode symbols such as emoji.
+NOISE_PATTERN = re.compile(r"[\u0000-\u001F\u007F]")
 
 
 def clean_text(text: str, lowercase: bool = False) -> str:
