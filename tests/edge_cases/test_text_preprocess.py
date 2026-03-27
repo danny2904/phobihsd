@@ -12,3 +12,11 @@ def test_clean_text_normalizes_spaces():
     raw = "xin   chao\n\n  ban"
     out = clean_text(raw)
     assert out == "xin chao ban"
+
+
+def test_clean_text_removes_symbol_chars():
+    raw = "gia 100$ ~ 200€ ✔"
+    out = clean_text(raw)
+    assert "$" not in out
+    assert "€" not in out
+    assert "✔" not in out
